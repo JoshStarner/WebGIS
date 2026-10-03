@@ -1,0 +1,23 @@
+{
+  // "Run and Debug" (F5) configurations. This replaces the Visual Studio
+  // "Web Server (Firefox)" button and the project Debug properties page.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Django: Web Server",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/manage.py",
+      "args": ["runserver", "0.0.0.0:8000"],
+      "django": true,
+      "justMyCode": true,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "Starting development server at http://.*:(\\d+)/",
+        // Launch URL: the page that opens when the server starts.
+        // Change "/" to "/test/" once you have made the test page.
+        "uriFormat": "http://localhost:%s/"
+      }
+    }
+  ]
+}

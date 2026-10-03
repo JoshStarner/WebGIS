@@ -1,0 +1,34 @@
+{
+  "name": "Web Mapping (Django + GIS)",
+  "build": { "dockerfile": "Dockerfile" },
+
+  "hostRequirements": { "cpus": 2 },
+
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": { "label": "Django web server", "onAutoForward": "notify" }
+  },
+
+  "postCreateCommand": "pip install --user -r requirements.txt && python manage.py migrate",
+
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    },
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ecmel.vscode-html-css"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "editor.lineNumbers": "on",
+        "editor.tabSize": 4,
+        "files.autoSave": "afterDelay",
+        "files.associations": { "**/templates/**/*.html": "html" },
+        "html.autoClosingTags": true
+      }
+    }
+  }
+}
